@@ -6,48 +6,49 @@
 - **npm**: Comes with Node.js
 - **OpenAI API Key**: Required for AI budget assistant
 
-## Installation Steps
+## Quick Start
 
-1. **Clone the repository**
+1. **Clone and setup**
    ```bash
    git clone https://github.com/santoshkunwar8/ExpenseIntelligence.git
    cd ExpenseIntelligence
-   ```
-
-2. **Install dependencies**
-   ```bash
    npm install
    ```
 
-3. **Set up environment variables**
+2. **Create environment file**
    ```bash
    cp .env.example .env
    ```
    
-   Edit `.env` file and add your OpenAI API key:
+   Edit `.env` and add your OpenAI API key:
    ```
    OPENAI_API_KEY=sk-your-actual-openai-api-key-here
    NODE_ENV=development
    PORT=5000
    ```
 
-4. **For local development (fix Vite config issues)**
+3. **Fix Node.js compatibility issues**
    
-   If you encounter the `import.meta.dirname` error, use the local Vite config:
+   The original files use `import.meta.dirname` which isn't available in Node.js 18. Replace with local versions:
+   
    ```bash
-   # Rename the original vite config
-   mv vite.config.ts vite.config.replit.ts
+   # Replace server files
+   mv server/index.ts server/index.replit.ts
+   mv server/vite.ts server/vite.replit.ts
+   mv server/index.local.ts server/index.ts
+   mv server/vite.local.ts server/vite.ts
    
-   # Use the local-compatible config
+   # Replace vite config
+   mv vite.config.ts vite.config.replit.ts
    mv vite.config.local.ts vite.config.ts
    ```
 
-5. **Start the application**
+4. **Start the application**
    ```bash
    npm run dev
    ```
 
-6. **Access the application**
+5. **Access the application**
    - Open your browser to `http://localhost:5000`
    - The Express server serves both API and frontend
 
